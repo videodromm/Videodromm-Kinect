@@ -39,6 +39,77 @@ void VideodrommKinectApp::setup()
 	mFluid2D.enableVorticityConfinement();
 
 	mParticles.setup(getWindowBounds(), &mFluid2D);
+	// kinec
+	Kinect::DeviceType type = Kinect::Kinect1;
+#ifdef KINECT_V2
+	type = Kinect::Kinect2;
+#endif
+	mDevice = Kinect::Device::create(type);
+	if (!mDevice->isValid())
+	{
+		quit();
+		return;
+	}
+	mDevice->signalDepthDirty.connect(std::bind(&VideodrommKinectApp::updateDepthRelated, this));
+
+	mDepthW = mDevice->getDepthSize().x;
+	mDepthH = mDevice->getDepthSize().y;
+	mDiffMat = cv::Mat1b(mDepthH, mDepthW);
+	mDiffChannel = Channel(mDepthW, mDepthH, mDiffMat.step, 1, mDiffMat.ptr());
+
+}
+void VideodrommKinectApp::updateDepthRelated()
+{
+	updateTexture(mDepthTexture, mDevice->depthChannel);
+
+
+	mDiffMat.setTo(cv::Scalar::all(0));
+	//float x0 = corners[CORNER_DEPTH_LT].x - depthOrigin.x;
+	//float x1 = corners[CORNER_DEPTH_RB].x - depthOrigin.x;
+	//float y0 = corners[CORNER_DEPTH_LT].y - depthOrigin.y;
+	//float y1 = corners[CORNER_DEPTH_RB].y - depthOrigin.y;
+
+	int cx = CENTER_X * mDepthW;
+	int cy = CENTER_Y * mDepthH;
+	int radius = RADIUS * mDepthH;
+	int radius_sq = radius * radius;
+
+	for (int yy = mInputRoi.y1; yy < mInputRoi.y2; yy++)
+	{
+		// TODO: cache row pointer
+		int y = yy;
+		for (int xx = mInputRoi.x1; xx < mInputRoi.x2; xx++)
+		{
+			int x = LEFT_RIGHT_FLIPPED ? (mDepthW - xx) : xx;
+			uint16_t bg = *mBackChannel.getData(x, y);
+			uint16_t dep = *mDevice->depthChannel.getData(x, y);
+			if (dep > 0 && bg - dep > MIN_THRESHOLD_MM && bg - dep < MAX_THRESHOLD_MM)
+			{
+				// TODO: optimize
+				if (!CIRCLE_MASK_ENABLED || (cx - x) * (cx - x) + (cy - y) * (cy - y) < radius_sq)
+				{
+					mDiffMat(yy, xx) = 255;
+				}
+			}
+		}
+	}
+
+	if (TRACKING_SMOOTH > 0)
+	{
+		cv::Mat element = getStructuringElement(cv::MORPH_RECT, cv::Size(TRACKING_SMOOTH * 2 + 1, TRACKING_SMOOTH * 2 + 1),
+			cv::Point(TRACKING_SMOOTH, TRACKING_SMOOTH));
+		cv::morphologyEx(mDiffMat, mDiffMat, cv::MORPH_OPEN, element);
+	}
+
+	updateTexture(mDiffTexture, mDiffChannel);
+	std::vector<Blob> blobs;
+	BlobFinder::Option option;
+	option.minArea = MIN_AREA;
+	option.handOnlyMode = FINGER_MODE_ENABLED;
+	option.handDistance = FINGER_SIZE;
+	BlobFinder::execute(mDiffMat, blobs, option);
+	mBlobTracker.trackBlobs(blobs);
+	//sendTuioMessage(*mOscSender, mBlobTracker);
 }
 void VideodrommKinectApp::fileDrop(FileDropEvent event)
 {
@@ -193,6 +264,13 @@ void VideodrommKinectApp::draw()
 	gl::draw(mTex, getWindowBounds());
 	mTex->unbind();
 	mParticles.draw();
+	if (mDepthTexture)
+	{
+		//gl::ScopedGlslProg prog(mShader);
+		gl::draw(mDepthTexture);
+
+	}
+	//visualizeBlobs(mBlobTracker);
 	//mParams.draw();
 	getWindow()->setTitle("(" + mVDSettings->sFps + " fps) " + toString(mVDSettings->iBeat) + " Videodromm");
 }

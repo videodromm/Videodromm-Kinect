@@ -115,6 +115,9 @@
     <Filter Include="Blocks\Cinder-KinectSDK\v2">
       <UniqueIdentifier>{185dd738-9469-4f3b-b06f-fbcdfa039114}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Blocks\vnm\include">
+      <UniqueIdentifier>{495a6ab7-3370-4f81-aeb5-24c97a6c941c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\VideodrommKinectApp.cpp">
@@ -357,27 +360,6 @@
     <ClCompile Include="..\..\..\Cinder\blocks\Cinder-Videodromm\src\VDUtils.cpp">
       <Filter>Blocks\Videodromm\src</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\AssetManager.h">
-      <Filter>Blocks\vnm\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\CaptureHelper.h">
-      <Filter>Blocks\vnm\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\DistortionHelper.h">
-      <Filter>Blocks\vnm\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\MiniConfig.h">
-      <Filter>Blocks\vnm\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\MotionHelper.h">
-      <Filter>Blocks\vnm\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\StateMachine.h">
-      <Filter>Blocks\vnm\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\TextureHelper.h">
-      <Filter>Blocks\vnm\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Cinder\blocks\Cinder-Warping\include\Warp.h">
       <Filter>Blocks\Cinder-Warping\include</Filter>
     </ClInclude>
@@ -574,6 +556,30 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\stdafx.h">
       <Filter>Blocks\Cinder-KinectSDK\v2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\AssetManager.h">
+      <Filter>Blocks\vnm\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\CaptureHelper.h">
+      <Filter>Blocks\vnm\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\DistortionHelper.h">
+      <Filter>Blocks\vnm\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\MiniConfig.h">
+      <Filter>Blocks\vnm\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\MiniConfigImgui.h">
+      <Filter>Blocks\vnm\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\MotionHelper.h">
+      <Filter>Blocks\vnm\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\StateMachine.h">
+      <Filter>Blocks\vnm\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\TextureHelper.h">
+      <Filter>Blocks\vnm\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

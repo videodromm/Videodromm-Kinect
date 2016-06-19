@@ -13,6 +13,7 @@
 #include "CinderOpenCV.h"
 #include "BlobTracker.h"
 #include "KinectDevice.h"
+#include "TextureHelper.h"
 
 // Settings
 #include "VDSettings.h"
@@ -39,6 +40,7 @@ public:
 	void						draw() override;
 	void						fileDrop(FileDropEvent event) override;
 	void						cleanup() override;
+	void						updateDepthRelated();
 private:
 	// Settings
 	VDSettingsRef				mVDSettings;
@@ -66,4 +68,30 @@ private:
 	std::map<int, ci::Colorf>	mTouchColors;
 	// kinec
 	Kinect::DeviceRef			mDevice;
+	int							mDepthW, mDepthH;
+	// vision
+	Channel16u mBackChannel;
+	gl::TextureRef mBackTexture;
+	BlobTracker mBlobTracker;
+
+	Channel mDiffChannel;
+	cv::Mat1b mDiffMat;
+	gl::TextureRef mDiffTexture;
+
+	Rectf mInputRoi;
+	Rectf mOutputMap;
+
+	//constants
+	const float CENTER_X = 0.5f;
+	const float CENTER_Y = 0.5f;
+	const float RADIUS = 0.5f;
+	const bool LEFT_RIGHT_FLIPPED = false;
+	const float MIN_THRESHOLD_MM = 50.0f;
+	const float MAX_THRESHOLD_MM = 1000.0f;
+	const float MIN_AREA = 100.0f;
+	const bool CIRCLE_MASK_ENABLED = false;
+	const float FINGER_SIZE = 30.0f;
+	const int TRACKING_SMOOTH = 2;
+	const bool FINGER_MODE_ENABLED = false;
+	gl::TextureRef mDepthTexture;
 };

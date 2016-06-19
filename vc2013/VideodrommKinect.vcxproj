@@ -50,7 +50,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;..\..\..\Cinder\include;..\..\..\Cinder\blocks\Cinder-Hap2\src;..\..\..\Cinder\blocks\Cinder-ImGui\lib\imgui;..\..\..\Cinder\blocks\Cinder-ImGui\include;..\..\..\Cinder\blocks\Cinder-MIDI2\include;..\..\..\Cinder\blocks\Cinder-MIDI2\lib;..\..\..\Cinder\blocks\Cinder-MIDI2\src;..\..\..\Cinder\blocks\Cinder-OpenCV3\include;..\..\..\Cinder\blocks\Cinder-Spout\include;..\..\..\Cinder\blocks\Cinder-Videodromm\include;..\..\..\Cinder\blocks\Cinder-Videodromm\src;..\..\..\Cinder\blocks\Cinder-VNM\src;..\..\..\Cinder\blocks\Cinder-Warping\include;..\..\..\Cinder\blocks\Cinder-WebSocketPP\src;..\..\..\Cinder\include\asio;..\..\..\Cinder\blocks\CinderFx\src;..\..\..\Cinder\blocks\OSC\src;..\..\..\Cinder\blocks\QuickTime\include\msw;..\..\..\Cinder\blocks\QuickTime\include;..\..\..\Cinder\blocks\Cinder-KinectSDK\;..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\Cinder\include;..\..\..\Cinder\blocks\Cinder-Hap2\src;..\..\..\Cinder\blocks\Cinder-ImGui\lib\imgui;..\..\..\Cinder\blocks\Cinder-ImGui\include;..\..\..\Cinder\blocks\Cinder-MIDI2\include;..\..\..\Cinder\blocks\Cinder-MIDI2\lib;..\..\..\Cinder\blocks\Cinder-MIDI2\src;..\..\..\Cinder\blocks\Cinder-OpenCV3\include;..\..\..\Cinder\blocks\Cinder-Spout\include;..\..\..\Cinder\blocks\Cinder-Videodromm\include;..\..\..\Cinder\blocks\Cinder-Videodromm\src;..\..\..\Cinder\blocks\Cinder-VNM\src;..\..\..\Cinder\blocks\Cinder-Warping\include;..\..\..\Cinder\blocks\Cinder-WebSocketPP\src;..\..\..\Cinder\include\asio;..\..\..\Cinder\blocks\CinderFx\src;..\..\..\Cinder\blocks\OSC\src;..\..\..\Cinder\blocks\QuickTime\include\msw;..\..\..\Cinder\blocks\QuickTime\include;..\..\..\Cinder\blocks\Cinder-KinectSDK\;..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\..\Cinder\blocks\Cinder-VNM\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -81,7 +81,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;..\..\..\Cinder\include;..\..\..\Cinder\blocks\Cinder-Hap2\src;..\..\..\Cinder\blocks\Cinder-ImGui\lib\imgui;..\..\..\Cinder\blocks\Cinder-ImGui\include;..\..\..\Cinder\blocks\Cinder-MIDI2\include;..\..\..\Cinder\blocks\Cinder-MIDI2\lib;..\..\..\Cinder\blocks\Cinder-MIDI2\src;..\..\..\Cinder\blocks\Cinder-OpenCV3\include;..\..\..\Cinder\blocks\Cinder-Spout\include;..\..\..\Cinder\blocks\Cinder-Videodromm\include;..\..\..\Cinder\blocks\Cinder-Videodromm\src;..\..\..\Cinder\blocks\Cinder-VNM\src;..\..\..\Cinder\blocks\Cinder-Warping\include;..\..\..\Cinder\blocks\Cinder-WebSocketPP\src;..\..\..\Cinder\include\asio;..\..\..\Cinder\blocks\CinderFx\src;..\..\..\Cinder\blocks\OSC\src;..\..\..\Cinder\blocks\QuickTime\include\msw;..\..\..\Cinder\blocks\QuickTime\include;..\..\..\Cinder\blocks\Cinder-KinectSDK\;..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\Cinder\include;..\..\..\Cinder\blocks\Cinder-Hap2\src;..\..\..\Cinder\blocks\Cinder-ImGui\lib\imgui;..\..\..\Cinder\blocks\Cinder-ImGui\include;..\..\..\Cinder\blocks\Cinder-MIDI2\include;..\..\..\Cinder\blocks\Cinder-MIDI2\lib;..\..\..\Cinder\blocks\Cinder-MIDI2\src;..\..\..\Cinder\blocks\Cinder-OpenCV3\include;..\..\..\Cinder\blocks\Cinder-Spout\include;..\..\..\Cinder\blocks\Cinder-Videodromm\include;..\..\..\Cinder\blocks\Cinder-Videodromm\src;..\..\..\Cinder\blocks\Cinder-VNM\src;..\..\..\Cinder\blocks\Cinder-Warping\include;..\..\..\Cinder\blocks\Cinder-WebSocketPP\src;..\..\..\Cinder\include\asio;..\..\..\Cinder\blocks\CinderFx\src;..\..\..\Cinder\blocks\OSC\src;..\..\..\Cinder\blocks\QuickTime\include\msw;..\..\..\Cinder\blocks\QuickTime\include;..\..\..\Cinder\blocks\Cinder-KinectSDK\;..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\..\Cinder\blocks\Cinder-VNM\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -142,6 +142,14 @@
     <ClInclude Include="..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBv2Lib.h" />
     <ClInclude Include="..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KinectList.h" />
     <ClInclude Include="..\..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\stdafx.h" />
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\AssetManager.h" />
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\CaptureHelper.h" />
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\DistortionHelper.h" />
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\MiniConfig.h" />
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\MiniConfigImgui.h" />
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\MotionHelper.h" />
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\StateMachine.h" />
+    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\include\TextureHelper.h" />
     <ClInclude Include="..\include\BlobTracker.h" />
     <ClInclude Include="..\include\Particles.h" />
     <ClInclude Include="..\include\point2d.h" />
@@ -187,13 +195,6 @@
     <ClInclude Include="..\..\..\Cinder\blocks\Cinder-Videodromm\include\VDUIWebsockets.h" />
     <ClInclude Include="..\..\..\Cinder\blocks\Cinder-Videodromm\include\VDUtils.h" />
     <ClInclude Include="..\..\..\Cinder\blocks\Cinder-Videodromm\include\Watchdog.h" />
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\AssetManager.h" />
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\CaptureHelper.h" />
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\DistortionHelper.h" />
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\MiniConfig.h" />
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\MotionHelper.h" />
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\StateMachine.h" />
-    <ClInclude Include="..\..\..\Cinder\blocks\Cinder-VNM\src\TextureHelper.h" />
     <ClInclude Include="..\..\..\Cinder\blocks\Cinder-Warping\include\Warp.h" />
     <ClInclude Include="..\..\..\Cinder\blocks\Cinder-WebSocketPP\src\WebSocketClient.h" />
     <ClInclude Include="..\..\..\Cinder\blocks\Cinder-WebSocketPP\src\WebSocketConnection.h" />
