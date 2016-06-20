@@ -58,16 +58,19 @@ void VideodrommKinectApp::setup()
 	mDiffChannel = Channel(mDepthW, mDepthH, mDiffMat.step, 1, mDiffMat.ptr());
 
 }
+void VideodrommKinectApp::updateBack()
+{
+	mBackChannel = mDevice->depthChannel.clone();
+	updateTexture(mBackTexture, mBackChannel);
+}
 void VideodrommKinectApp::updateDepthRelated()
 {
 	updateTexture(mDepthTexture, mDevice->depthChannel);
-
-
+	if (!mBackTexture)
+	{
+		updateBack();
+	}
 	mDiffMat.setTo(cv::Scalar::all(0));
-	//float x0 = corners[CORNER_DEPTH_LT].x - depthOrigin.x;
-	//float x1 = corners[CORNER_DEPTH_RB].x - depthOrigin.x;
-	//float y0 = corners[CORNER_DEPTH_LT].y - depthOrigin.y;
-	//float y1 = corners[CORNER_DEPTH_RB].y - depthOrigin.y;
 
 	int cx = CENTER_X * mDepthW;
 	int cy = CENTER_Y * mDepthH;
@@ -237,11 +240,22 @@ void VideodrommKinectApp::update()
 	mParticles.update();
 	mVDSettings->iFps = getAverageFps();
 	mVDSettings->sFps = toString(floor(mVDSettings->iFps));
-
+	mInputRoi.set(
+		INPUT_X1 * mDepthW,
+		INPUT_Y1 * mDepthH,
+		INPUT_X2 * mDepthW,
+		INPUT_Y2 * mDepthH
+		);
+	mOutputMap.set(
+		OUTPUT_X1 * mDepthW,
+		OUTPUT_Y1 * mDepthH,
+		OUTPUT_X2 * mDepthW,
+		OUTPUT_Y2 * mDepthH
+		);
 }
 void VideodrommKinectApp::draw()
 {
-	gl::clear( Color::black() );
+	gl::clear(Color::black());
 	i = 0;
 	for (auto tex : mTexs)
 	{
@@ -253,7 +267,6 @@ void VideodrommKinectApp::draw()
 	gl::color(ColorAf(1.0f, 1.0f, 1.0f, 0.999f));
 	float* data = const_cast<float*>((float*)mFluid2D.rgb().data());
 	Surface32f surf(data, mFluid2D.resX(), mFluid2D.resY(), mFluid2D.resX()*sizeof(Colorf), SurfaceChannelOrder::RGB);
-
 
 	if (!mTex) {
 		mTex = gl::Texture::create(surf);
@@ -268,11 +281,33 @@ void VideodrommKinectApp::draw()
 	{
 		//gl::ScopedGlslProg prog(mShader);
 		gl::draw(mDepthTexture);
-
 	}
 	//visualizeBlobs(mBlobTracker);
+	char idName[10];
+	for (const auto &blob : mBlobTracker.trackedBlobs)
+	{
+		float x = (blob.center.x / (float)getWindowWidth())*mFluid2D.resX();
+		float y = (blob.center.y / (float)getWindowHeight())*mFluid2D.resY();
+		float s = 10;
+
+		vec2 dv = vec2(blob.center.x, blob.center.y) - mPrevPos;
+		mFluid2D.splatVelocity(x, y, mVelScale*dv);
+		mFluid2D.splatRgb(x, y, mRgbScale*mColor);
+		if (mFluid2D.isBuoyancyEnabled()) {
+			mFluid2D.splatDensity(x, y, mDenScale);
+		}
+		//
+		for (int i = 0; i < 10; ++i) {
+			vec2 partPos = vec2(blob.center.x, blob.center.y) + vec2(Rand::randFloat(-s, s), Rand::randFloat(-s, s));
+			float life = Rand::randFloat(2.0f, 4.0f);
+			mParticles.append(Particle(partPos, life, mColor));
+		}
+
+		mPrevPos = vec2(blob.center.x, blob.center.y);
+
+	}
 	//mParams.draw();
-	getWindow()->setTitle("(" + mVDSettings->sFps + " fps) " + toString(mVDSettings->iBeat) + " Videodromm");
+	getWindow()->setTitle("(" + mVDSettings->sFps + " fps) Videodromm");
 }
 
 

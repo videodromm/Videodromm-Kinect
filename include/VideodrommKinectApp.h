@@ -41,6 +41,7 @@ public:
 	void						fileDrop(FileDropEvent event) override;
 	void						cleanup() override;
 	void						updateDepthRelated();
+	void						updateBack();
 private:
 	// Settings
 	VDSettingsRef				mVDSettings;
@@ -93,5 +94,15 @@ private:
 	const float FINGER_SIZE = 30.0f;
 	const int TRACKING_SMOOTH = 2;
 	const bool FINGER_MODE_ENABLED = false;
+
+	const float INPUT_X1 = 0.05f;
+	const float INPUT_Y1 = 0.05f;
+	const float INPUT_X2 = 0.95f;
+	const float INPUT_Y2 = 0.95f;
+	const float OUTPUT_X1 = -0.05f;
+	const float OUTPUT_Y1 = -0.05f;
+	const float OUTPUT_X2 = 1.05f;
+	const float OUTPUT_Y2 = 1.05f;
+
 	gl::TextureRef mDepthTexture;
 };
